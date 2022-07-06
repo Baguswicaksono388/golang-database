@@ -16,3 +16,16 @@
 - Unk menggunakan database MySQl, kita bisa menggunakan driver "mysql"
 - Sedangkan unk dataSourceName, tiap database punya cara penulisan masing - masing, misal di MySQL, kita bisa menggunakan dataSourceName seperti : (username:password@tcp(host:port)/database_name)
 - Jika object sql.DB sudah tdk digunakan lagi, disarankan unk menutupnya menggunakan function Close()
+
+# Database Pooling
+- sql.DB di Go-Lang sebenarnya bukanlah sebuah koneksi ke database
+- Melainkan sebuah pool ke database, atau dikenal dgn konsep Database Pooling
+- Di dalam sql.DB, Golang melakukan management koneksi ke database secara otomatis. Hal ini menjadikan kita tidak perlu melakukan management koneksi database secara manual
+- Dgn kemampuan database pooling ini, kita bisa menentukan jumlah minimal dan maksimal koneksi yg dibuat di Go-Lang, sehingga tdk membanjiri koneksi ke database, krn biasanya ada batas maksimal koneksi yg bisa ditangani oleh database yg kita gunakan.
+- Manajemen Koneksi bisa disebut Pooling
+
+# Pengaturan Database Pooling
+- (DB) SetMaxIdleConns(number) => Pengaturan beberapa jumlah koneksi minimal yg dibuat
+- (DB) SetMaxOpenConns(number) => Pengaturan beberapa jumlah koneksi maksimal yg dibuat
+- (DB) SetConnMaxIdleTime(duration) => Pengaturan beberapa lama koneksi yg sdh tdk digunakan akan dihapus
+- (DB) SetConnMaxLifetime(duration) => Pengaturan beberapa lama koneksi boleh digunakan
