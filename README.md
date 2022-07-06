@@ -29,3 +29,8 @@
 - (DB) SetMaxOpenConns(number) => Pengaturan beberapa jumlah koneksi maksimal yg dibuat
 - (DB) SetConnMaxIdleTime(duration) => Pengaturan beberapa lama koneksi yg sdh tdk digunakan akan dihapus
 - (DB) SetConnMaxLifetime(duration) => Pengaturan beberapa lama koneksi boleh digunakan
+
+# Eksekusi Perintah SQL
+- Saat membuat aplikasi menggunakan database, sdh pasti kita ingin berkomunikasi dengan database menggunakan perintah SQL
+- Di Golang menyediakan func yg bisa kita gunakan unk mengirim perintah SQL ke database menggunakan func (DB) ExecContext(context, sql, params)
+- Ketika mengirim perintah SQL, kita butuh mengirimkan context, dan seperti yg sdh pernah kita pelajari di course Golang Context, dgn context, kita bisa mengirim sinyal cancel jika kita ingin membatalkan pengiriman perintah SQL nya
