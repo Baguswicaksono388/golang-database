@@ -34,3 +34,14 @@
 - Saat membuat aplikasi menggunakan database, sdh pasti kita ingin berkomunikasi dengan database menggunakan perintah SQL
 - Di Golang menyediakan func yg bisa kita gunakan unk mengirim perintah SQL ke database menggunakan func (DB) ExecContext(context, sql, params)
 - Ketika mengirim perintah SQL, kita butuh mengirimkan context, dan seperti yg sdh pernah kita pelajari di course Golang Context, dgn context, kita bisa mengirim sinyal cancel jika kita ingin membatalkan pengiriman perintah SQL nya
+
+# Querry SQL
+- Unk operasi SQL yg tidak membutuhkan hasil, kita bisa menggunakan perintah Exec, namun jika kita membutuhkan result, seperti SELECT SQL, kita bisa menggunakan func yg berbeda
+- Func unk melakukan querry ke database, bisa menggunakan func (DB) QueryContext(context, sql, params)
+
+# Rows
+- Hasil Querry func adalah sebuah data structs sql.Rows
+- Rows digunakan unk melakukan iterasi terhadap hsl dari querry
+- Kita bisa menggunakan func (Rows) Next() (boolean) unk melakukan iterasi terhadap data hasil query, jika return data false, artinya sdh tdk ada data lagi didalam result
+- Unk membaca tiap data, kita bisa menggunakan (Rows) Scan(columns...)
+- Dan jangan lupa, setelah menggunakan Rows, jangan lupa unk menutupnya menggunakan (Rows)(Close)
